@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Chicken by stnava</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/stnava/chicken">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/stnava/chicken/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/stnava/chicken/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Chicken</h1>
+          <p>a global optimization example + landmark distances</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/stnava">stnava</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="chicken" class="anchor" href="#chicken"><span class="octicon octicon-link"></span></a>chicken</h1>
+
+<p>a global optimization example + landmark distances performed with <a href="http://www.itk.org.">ITK</a> and <a href="http://stnava.github.io/ANTs/" title="ANTs">ANTs</a></p>
+
+<p>Global optimization. You may need to change the parameters for your own application. </p>
+
+<p>See the code <a href="https://github.com/stnava/ANTs/blob/master/Examples/antsAffineInitializer.cxx">here</a> which uses ITK multi-start optimization</p>
+
+<p><code>antsAffineInitializer 2 chicken-4.jpg chicken-3.jpg chicken3to4.mat 10  0.3 0 10</code></p>
+
+<p>Now apply the results to warp the images and the labels.</p>
+
+<p><code>antsApplyTransforms -d 2 -i chicken-3.jpg -o test.nii.gz -r chicken-4.jpg -t chicken3to4.mat</code>
+<code>antsApplyTransforms -d 2 -i chicken-3-seg.nii.gz -o chicken-3-segw.nii.gz -r chicken-4.jpg -t chicken3to4.mat -n NearestNeighbor</code></p>
+
+<p>Now convert to csv files to take a look at point-wise results.</p>
+
+<p><code>ImageMath 2 chicken-3.csv LabelStats chicken-3-seg.nii.gz chicken-3-seg.nii.gz</code>
+<code>ImageMath 2 chicken-3w.csv LabelStats chicken-3-segw.nii.gz chicken-3-segw.nii.gz</code></p>
+
+<p>Transform the points.</p>
+
+<p><code>antsApplyTransformsToPoints -d 2 -i chicken-3.csv -o test.csv -t [chicken3to4.mat ,1 ]</code></p>
+
+<p>And compare - test.csv should be similar to chicken-3w.csv ... </p>
+
+<p>The example images are here:</p>
+
+<p><img src="https://github.com/stnava/chicken/blob/master/data/chicken-3.jpg?raw=true" alt="Chicken-3"></p>
+
+<p><img src="https://github.com/stnava/chicken/blob/master/data/chicken-4.jpg?raw=true" alt="Chicken-4"></p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
