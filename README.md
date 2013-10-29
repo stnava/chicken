@@ -25,3 +25,13 @@ Transform the points.
 `antsApplyTransformsToPoints -d 2 -i chicken-3.csv -o test.csv -t [chicken3to4.mat ,1 ]`
 
 And compare - test.csv should be similar to chicken-3w.csv ... 
+
+
+The example images are here:
+
+
+![Chicken-3](https://github.com/stnava/chicken/blob/master/data/chicken-3.jpg?raw=true)
+
+![Chicken-4](https://github.com/stnava/chicken/blob/master/data/chicken-4.jpg?raw=true)
+
+
