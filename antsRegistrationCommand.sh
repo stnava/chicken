@@ -3,21 +3,21 @@ movingPoints='data/chicken-3.nii.gz'
 
 outputDirectory='./'
 outputPrefix=${outputDirectory}/pseChicken4xChicken3
-
+s=0.1 # sampling rate
 antsRegistration -d 2 \
                  -o ${outputPrefix} \
                  -r [${fixedPoints},${movingPoints},1] \
-                 -m PSE[${fixedPoints},${movingPoints},1,1,1,20,50] \
+                 -m PSE[${fixedPoints},${movingPoints},1,${s},1,20,50] \
                  -t Affine[0.1] \
                  -c [50,0,10] \
                  -s 0 \
                  -f 1 \
-                 -m PSE[${fixedPoints},${movingPoints},1,1,1,10,50] \
+                 -m PSE[${fixedPoints},${movingPoints},1,${s},1,10,50] \
                  -t Affine[0.1] \
                  -c [40,0,10] \
                  -s 0 \
                  -f 1 \
-                 -m PSE[${fixedPoints},${movingPoints},1,1,1,5,50] \
+                 -m PSE[${fixedPoints},${movingPoints},1,${s},1,5,50] \
                  -t Affine[0.1] \
                  -c [20,0,10] \
                  -s 0 \
