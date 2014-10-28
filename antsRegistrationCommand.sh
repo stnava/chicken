@@ -6,7 +6,7 @@ outputPrefix=${outputDirectory}/pseChicken4xChicken3
 
 antsRegistration -d 2 \
                  -o ${outputPrefix} \
-                 -r PSE[${fixedPoints},${movingPoints},1] \
+                 -r [${fixedPoints},${movingPoints},1] \
                  -m PSE[${fixedPoints},${movingPoints},1,1,1,20,50] \
                  -t Affine[0.1] \
                  -c [50,0,10] \
