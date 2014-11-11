@@ -12,3 +12,8 @@ ImageMath 2 chicken-3w.csv LabelStats chicken-3-segw.nii.gz chicken-3-segw.nii.g
 antsApplyTransformsToPoints -d 2 -i chicken-3.csv -o test.csv -t [chicken3to4.mat ,1 ]
 
 
+# these should produce identical output, up to file format
+antsApplyTransformsToPoints -d 2 -i ./data/chicken-3-ref.csv -o testq2.csv -t [ data/chicken3to4-ref.mat , 1]
+antsApplyTransformsToPoints -d 2 -i ./data/chicken-3-ref.mha -o testq2.mha -t [ data/chicken3to4-ref.mat , 1]
+
+
