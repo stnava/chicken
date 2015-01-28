@@ -8,7 +8,6 @@ k=10 # k - neighborhood
 antsRegistration -d 2 \
                  -o ${outputPrefix} \
                  -r [${fixedPoints},${movingPoints},1] \
-                 -x [${fixedPoints},${movingPoints}] \
                  -m PSE[${fixedPoints},${movingPoints},1,${s},1,20,$k] \
                  -t Affine[0.1] \
                  -c [50,0,10] \
