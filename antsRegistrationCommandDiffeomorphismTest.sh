@@ -13,7 +13,7 @@ k=5 # k - neighborhood
 antsRegistration -d 2 \
                  -o ${outputPrefix} \
                  -x [${fixedPoints},${movingPoints}] \
-                 -m PSE[${fixedPoints},${movingPoints},1,${s},0,25,$k] \
+                 -m PSE[${fixedPoints},${movingPoints},1,${s},0,100,$k] \
                  -t BSplineSyN[0.5,1x1,0,5] \
                  -c [200x200x200x200x50,0,10] \
                  -s 0x0x0x0x0 \
@@ -26,3 +26,6 @@ antsRegistration -d 2 \
                      -t ${outputPrefix}0Warp.nii.gz
 
 CreateWarpedGridImage 2 ${outputPrefix}0Warp.nii.gz ${outputPrefix}WarpedGrid.nii.gz
+
+# now visualize with snap
+#  snap -g diffeomorphismTestWarpedGrid.nii.gz -s diffeomorphismTestWarped.nii.gz
