@@ -13,7 +13,7 @@ k=5 # k - neighborhood
 txs="SyN[0.25,6,0.0]"
 txb="BSplineSyN[0.2,2x2,0,5]"
 tx=$txb
-antsRegistration -d 2 \
+time antsRegistration -d 2 \
                  -o ${outputPrefix} \
                  -x [${fixedPoints},${movingPoints}] \
                  -m PSE[${fixedPoints},${movingPoints},1,${s},0,50,$k] \
