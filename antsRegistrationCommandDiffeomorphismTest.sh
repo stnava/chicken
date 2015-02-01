@@ -13,7 +13,7 @@ k=5 # k - neighborhood
 antsRegistration -d 2 \
                  -o ${outputPrefix} \
                  -x [${fixedPoints},${movingPoints}] \
-                 -m PSE[${fixedPoints},${movingPoints},1,${s},0,55,$k] \
+                 -m PSE[${fixedPoints},${movingPoints},1,${s},0,25,$k] \
                  -t BSplineSyN[0.5,1x1,0,5] \
                  -c [200x200x200x200x50,0,10] \
                  -s 0x0x0x0x0 \
@@ -26,17 +26,3 @@ antsRegistration -d 2 \
                      -t ${outputPrefix}0Warp.nii.gz
 
 CreateWarpedGridImage 2 ${outputPrefix}0Warp.nii.gz ${outputPrefix}WarpedGrid.nii.gz
-
-exit
-
-#########################################################
-outputPrefix=oldANTs
-tx=" -r Gauss[6,0.75] -t SyN[1,4,0.05] -i 191x170x90x1x1 "
-ANTS 2 $tx   -m PSE[ data/pointsLowerLeftP.nii.gz , data/pointsUpperRightP.nii.gz ,data/pointsLowerLeftP.nii.gz , data/pointsUpperRightP.nii.gz , 1, 0.1, 10, 0,1, 0] -o ${outputPrefix}  --continue-affine 0 --number-of-affine-iterations 0 --geodesic 2
-CreateWarpedGridImage 2 ${outputPrefix}Warp.nii.gz ${outputPrefix}Grid.nii.gz
-antsApplyTransforms -d 2 \
-                    -o ${outputPrefix}Warped.nii.gz \
-                    -i data/pointsUpperRightP.nii.gz \
-                    -r data/pointsLowerLeftP.nii.gz \
-                    -n NearestNeighbor \
-                    -t ${outputPrefix}Warp.nii.gz
