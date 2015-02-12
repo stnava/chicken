@@ -19,10 +19,12 @@ antsApplyTransformsToPoints -d 2 -i test.csv -o testinv.csv -t chicken3to4.mat
 #
 # validation 1
 # testinv.csv should be the same as chicken-3.csv
+cat chicken-3.csv testinv.csv
 #
 # validation 2
 # test.csv should be close to chicken-3w.csv
-#
+cat chicken-3w.csv test.csv
+
 
 # these should produce identical output, up to file format
 antsApplyTransformsToPoints -d 2 -i ./data/chicken-3-ref.csv -o testq2.csv -t [ data/chicken3to4-ref.mat , 1]
