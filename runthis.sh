@@ -32,7 +32,7 @@ antsApplyTransformsToPoints -d 2 -i ./data/chicken-3-ref.mha -o testq2.mha -t [ 
 
 # a manual example
 ANTSUseLandmarkImagesToGetAffineTransform data/chicken-3-seg.nii.gz data/chicken-4-seg.nii.gz affine aff.txt
-antsApplyTransforms -d 2 -i data/chicken-4.nii.gz -o /tmp/chk.nii.gz -t aff.txt -r data/chicken-3.nii.gz 
+antsApplyTransforms -d 2 -i data/chicken-4.nii.gz -o /tmp/chk.nii.gz -t aff.txt -r data/chicken-3.nii.gz
 ImageMath 2 chicken-3.csv LabelStats data/chicken-3-seg.nii.gz data/chicken-3-seg.nii.gz
 ImageMath 2 chicken-4.csv LabelStats data/chicken-4-seg.nii.gz data/chicken-4-seg.nii.gz
-
+antsApplyTransformsToPoints -d 2 -i chicken-4.csv -o /tmp/chk.csv -t [aff.txt,1]
