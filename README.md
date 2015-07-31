@@ -13,11 +13,13 @@ See the code [here](https://github.com/stnava/ANTs/blob/master/Examples/antsAffi
 Now apply the results to warp the images and the labels.
 
 `antsApplyTransforms -d 2 -i chicken-3.jpg -o test.nii.gz -r chicken-4.jpg -t chicken3to4.mat `
+
 `antsApplyTransforms -d 2 -i chicken-3-seg.nii.gz -o chicken-3-segw.nii.gz -r chicken-4.jpg -t chicken3to4.mat -n NearestNeighbor `
 
 Now convert to csv files to take a look at point-wise results.
 
 `ImageMath 2 chicken-3.csv LabelStats chicken-3-seg.nii.gz chicken-3-seg.nii.gz `
+
 `ImageMath 2 chicken-3w.csv LabelStats chicken-3-segw.nii.gz chicken-3-segw.nii.gz `
 
 Transform the points.
