@@ -3,10 +3,11 @@ movingPoints='data/squares.nii.gz'
 
 outputDirectory='./'
 outputPrefix=${outputDirectory}/circlesxSquares
-s=0.5 # sampling rate
+s=1 # sampling rate
 k=10 # k - neighborhood
-antsRegistration -d 2 \
+antsRegistration -d 2 -v 1 \
                  -o ${outputPrefix} \
+                 -x [${fixedPoints},${movingPoints}] \
                  -r [${fixedPoints},${movingPoints},1] \
                  -m PSE[${fixedPoints},${movingPoints},1,${s},1,20,$k] \
                  -t Affine[0.1] \
@@ -24,12 +25,12 @@ antsRegistration -d 2 \
                  -s 0 \
                  -f 1 \
                  -m PSE[${fixedPoints},${movingPoints},1,${s},1,20,$k] \
-                 -t BSplineSyN[0.2,5x5,0] \
+                 -t SyN[0.2,6,0] \
                  -c [100x100x100,0,10] \
                  -s 0x0x0 \
                  -f 3x2x1
 
- antsApplyTransforms -d 2 \
+ antsApplyTransforms -d 2 -v 1 \
                      -o ${outputPrefix}Warped.nii.gz \
                      -i ${movingPoints} \
                      -r ${fixedPoints} \
