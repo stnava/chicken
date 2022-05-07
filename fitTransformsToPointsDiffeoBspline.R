@@ -1,3 +1,10 @@
+################################################################################
+# thin plate spline and the basic bspline fits cannot solve this problem
+# without non-biological folding ....
+# this was one of the original reasons we developed ANTs and related tools.
+# see 10.1016/j.media.2005.03.005
+# https://www.sciencedirect.com/science/article/abs/pii/S1361841505000411?via%3Dihub
+################################################################################
 library( ANTsR )
 library( patchMatchR )
 fixedPoints='data/pointsLowerLeftP.nii.gz'
